@@ -5,11 +5,12 @@
 /* global fetch */
 
 (function () {
+  /* INIT */
+  /* ================================================================================ */
   'use strict'
 
   const symbols = {} // Maps symbol name to quote object
 
-  // Click handlers
   document.stockAdd.onsubmit = (event) => {
     const inputElement = document.stockAdd.querySelector(`input[type='text']`)
     const loadingIcon = document.querySelector('.loading')
@@ -22,37 +23,18 @@
     loadingIcon.style.display = 'none'
   }
 
-  function displayError (message) {
-    const errorElement = document.querySelector('p.error')
-    errorElement.innerText = message
-    errorElement.style.display = 'block'
-  }
-
+  /* FUNCTIONS */
+  /* ================================================================================ */
   function clearError () {
     const errorElement = document.querySelector('p.error')
     errorElement.innerText = ''
     errorElement.style.display = 'none'
   }
 
-  function verifyBatchJSON (json) {
-    const requiredFields = [
-      'change',
-      'changePercent',
-      'companyName',
-      'high',
-      'latestPrice',
-      'low',
-      'symbol'
-    ]
-    const fields = Object.keys(json)
-
-    requiredFields.map(field => {
-      if (fields.indexOf(field) === -1) {
-        throw new Error(`Response JSON missing field ${field}.`)
-      }
-    })
-
-    return json
+  function displayError (message) {
+    const errorElement = document.querySelector('p.error')
+    errorElement.innerText = message
+    errorElement.style.display = 'block'
   }
 
   function getSymbolData (symbol) {
@@ -117,5 +99,26 @@
         </li>
       `
     }).join('')}`
+  }
+
+  function verifyBatchJSON (json) {
+    const requiredFields = [
+      'change',
+      'changePercent',
+      'companyName',
+      'high',
+      'latestPrice',
+      'low',
+      'symbol'
+    ]
+    const fields = Object.keys(json)
+
+    requiredFields.map(field => {
+      if (fields.indexOf(field) === -1) {
+        throw new Error(`Response JSON missing field ${field}.`)
+      }
+    })
+
+    return json
   }
 }())

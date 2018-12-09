@@ -14,10 +14,10 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
-    padding: 0;
     border: 0;
     font: inherit;
+    margin: 0;
+    padding: 0;
     vertical-align: baseline;
 }
 
@@ -59,11 +59,10 @@ h2 {
 }
 
 h3 {
-    --h3-size: 18px;
     font-size: var(--h3-size);
+    margin-bottom: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 3px;
     white-space: nowrap;
 }
 
@@ -88,15 +87,6 @@ input[type='text']:focus {
     color: var(--border-color);
 }
 
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--primary-shade);
-}
-
 input[type='submit'] {
     background-color: var(--primary-color);
     border: 0;
@@ -112,27 +102,24 @@ input[type='submit']:hover {
     background-color: var(--primary-shade);
 }
 
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
 
-/* LAYOUT RULES */
-/* ================================================================================ */
+a:hover {
+    color: var(--primary-shade);
+}
 
 main {
     margin: 0 auto;
     position: relative;
 }
 
-form {
-    align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    grid-gap: var(--sm-spacing);
-    justify-content: center;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-}
-
 footer {
+    background: var(--background-color);
     bottom: 0;
+    font-size: .8em;
     left: 0;
     padding: var(--m-spacing);
     position: fixed;
@@ -148,6 +135,16 @@ footer {
     padding: var(--l-spacing);
     text-align: center;
     width: 100%;
+}
+
+form {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-gap: var(--sm-spacing);
+    justify-content: center;
+    margin: 0 auto;
+    max-width: var(--max-content-width);
 }
 
 .error {
@@ -181,10 +178,10 @@ footer {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     display: grid;
-    overflow: hidden;
-    padding: var(--sm-spacing);
     font-size: 14px;
     grid-template-columns: 66% 33%;
+    overflow: hidden;
+    padding: var(--sm-spacing);
     width: var(--stock-width);
 }
 
@@ -212,11 +209,11 @@ footer {
 
 .priceRange {
     display: grid;
+    grid-gap: var(--sm-spacing);
     grid-template-areas:
             'range high'
             'range low';
     grid-template-columns: 1fr auto;
-    grid-gap: var(--sm-spacing);
     height: 100px;
     text-align: right;
 }
@@ -229,27 +226,22 @@ footer {
     box-sizing: border-box;
     border-right: 2px solid #ccc;
     grid-area: range;
-    margin-top: calc(.5 * var(--sm-spacing));
     height: calc(100% - var(--sm-spacing));
+    margin-top: calc(.5 * var(--sm-spacing));
     position: relative;
 }
 
 .arrow {
-    --arrow-height: 12px;
     color: var(--border-color);
+    height: var(--arrow-height);
     position: absolute;
     right: -1px;
-    height: var(--arrow-height);
 }
 
 .primary-stock-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-footer {
-    font-size: .8em;
 }
 
 .loading {
@@ -285,12 +277,14 @@ footer {
         --stock-width: auto;
     }
 
-    .priceRange {
-        display: none;
+    #stocks {
+        grid-template-columns: 1fr;
+        width: auto;
     }
 
-    .price {
-        margin-bottom: 0;
+    #stocks li {
+        display: block;
+        width: auto;
     }
 
     .primary-stock-content {
@@ -306,13 +300,11 @@ footer {
         text-align: right;
     }
 
-    #stocks {
-        grid-template-columns: 1fr;
-        width: auto;
+    .price {
+        margin-bottom: 0;
     }
 
-    #stocks li {
-        display: block;
-        width: auto;
+    .priceRange {
+        display: none;
     }
 }
