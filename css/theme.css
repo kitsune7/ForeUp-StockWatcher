@@ -1,0 +1,32 @@
+/* Droid Serif is not available free on Google Web Fonts, so I had to download it instead */
+@font-face {
+    font-family: 'Droid Serif';
+    src: url('../fonts/droid-serif/DroidSerif-Regular.ttf');
+}
+@font-face {
+    font-family: 'Droid Serif';
+    src: url('../fonts/droid-serif/DroidSerif-Bold.ttf');
+    font-weight: bold;
+}
+
+:root {
+    --primary-color: #73ad21;
+    --primary-shade: #5e8e1b;
+    --background-color: #f0f0f0;
+    --surface-color: #fff;
+    --text-color: #444;
+    --text-tint: #bbb;
+
+    --on-primary: #fff;
+
+    --l-spacing: 30px;
+    --m-spacing: 15px;
+    --sm-spacing: 10px;
+
+    --border-color: #ccc;
+    --border-radius: 4px;
+    --drop-shadow: 0 1px 0 var(--text-color);
+
+    --max-content-width: 400px;
+    --stock-width: 300px;
+}

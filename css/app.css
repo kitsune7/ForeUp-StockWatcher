@@ -1,0 +1,301 @@
+/* CSS RESET */
+/* ================================================================================ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* BASE RULES */
+/* ================================================================================ */
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Droid Serif', Garamond, serif;
+    padding: var(--m-spacing);
+}
+
+h1 {
+    margin: var(--l-spacing) 0;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    color: var(--text-tint);
+    font-size: 24px;
+    text-align: center;
+}
+
+h3 {
+    --h3-size: 18px;
+    font-size: var(--h3-size);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+h4 {
+    color: var(--text-tint);
+    text-transform: uppercase;
+}
+
+input[type='text'] {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 12px;
+    padding: var(--m-spacing) var(--m-spacing) var(--m-spacing) calc(.5 * (var(--m-spacing) + var(--l-spacing)));
+}
+
+input[type='text']:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+}
+
+::placeholder {
+    color: var(--border-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-shade);
+}
+
+button {
+    background-color: var(--primary-color);
+    border: 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--drop-shadow);
+    color: var(--on-primary);
+    cursor: pointer;
+    padding: var(--m-spacing);
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: var(--primary-shade);
+}
+
+
+/* LAYOUT RULES */
+/* ================================================================================ */
+
+main {
+    margin: 0 auto;
+    position: relative;
+}
+
+form {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-gap: var(--sm-spacing);
+    justify-content: center;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    padding: var(--m-spacing);
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* MODULE RULES */
+/* ================================================================================ */
+
+#browser-upgrade {
+    padding: var(--l-spacing);
+    text-align: center;
+    width: 100%;
+}
+
+#stocks {
+    align-items: center;
+    display: grid;
+    grid-gap: var(--m-spacing);
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    margin: var(--l-spacing) auto;
+    transition: content 2s;
+    width: calc(var(--m-spacing) + 2 * var(--stock-width));
+}
+
+#stocks li {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: grid;
+    overflow: hidden;
+    padding: var(--sm-spacing);
+    font-size: 14px;
+    grid-template-columns: 66% 33%;
+    width: var(--stock-width);
+}
+
+.positive {
+    color: #0a0;
+}
+
+.negative {
+    color: #f00;
+}
+
+.change, .price {
+    align-self: flex-end;
+    white-space: nowrap;
+}
+
+.change {
+    margin-bottom: 3px;
+}
+
+.price {
+    font-size: 24px;
+    margin-bottom: calc(.5 * var(--sm-spacing)); /* I don't like that this is in the design, but it is. */
+}
+
+.priceRange {
+    display: grid;
+    grid-template-areas:
+            'range high'
+            'range low';
+    grid-template-columns: 1fr auto;
+    grid-gap: var(--sm-spacing);
+    height: 100px;
+    text-align: right;
+}
+
+.priceRange p:last-of-type {
+    align-self: flex-end;
+}
+
+.line {
+    box-sizing: border-box;
+    border-right: 2px solid #ccc;
+    grid-area: range;
+    margin-top: calc(.5 * var(--sm-spacing));
+    height: calc(100% - var(--sm-spacing));
+    position: relative;
+}
+
+.arrow {
+    --arrow-height: 12px;
+    color: var(--border-color);
+    position: absolute;
+    right: -1px;
+    height: var(--arrow-height);
+}
+
+.primary-stock-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    font-size: .8em;
+}
+
+.loading {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    animation: spin 1.3s linear infinite;
+}
+
+.loading:after {
+    content: "$";
+    color: var(--primary-color);
+    font-size: 64px;
+    font-weight: bold;
+}
+
+@keyframes spin {
+    0% {
+        animation-timing-function: ease-in-out;
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+/* MEDIA QUERIES */
+/* ================================================================================ */
+
+@media only screen and (max-width: 690px) {
+    :root {
+        --stock-width: auto;
+    }
+
+    .priceRange {
+        display: none;
+    }
+
+    .price {
+        margin-bottom: 0;
+    }
+
+    .primary-stock-content {
+        flex-direction: row;
+    }
+
+    .primary-stock-content div:first-child {
+        width: 50%;
+    }
+
+    .primary-stock-content > div:last-child {
+        align-self: flex-end;
+        text-align: right;
+    }
+
+    #stocks {
+        grid-template-columns: 1fr;
+        width: auto;
+    }
+
+    #stocks li {
+        display: block;
+        width: auto;
+    }
+}
