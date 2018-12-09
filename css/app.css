@@ -97,7 +97,7 @@ a:hover {
     color: var(--primary-shade);
 }
 
-button {
+input[type='submit'] {
     background-color: var(--primary-color);
     border: 0;
     border-radius: var(--border-radius);
@@ -108,7 +108,7 @@ button {
     text-transform: uppercase;
 }
 
-button:hover {
+input[type='submit']:hover {
     background-color: var(--primary-shade);
 }
 
@@ -150,6 +150,14 @@ footer {
     width: 100%;
 }
 
+.error {
+    color: #c00;
+    display: none;
+    font-weight: bold;
+    padding: var(--m-spacing);
+    text-align: center;
+}
+
 #stocks {
     align-items: center;
     display: grid;
@@ -159,6 +167,13 @@ footer {
     margin: var(--l-spacing) auto;
     transition: content 2s;
     width: calc(var(--m-spacing) + 2 * var(--stock-width));
+}
+
+#stocks.empty {
+    align-items: center;
+    display: flex;
+    height: 400px;
+    justify-content: center;
 }
 
 #stocks li {
@@ -238,10 +253,12 @@ footer {
 }
 
 .loading {
-    display: inline-block;
-    margin: 0 auto;
-    text-align: center;
     animation: spin 1.3s linear infinite;
+    display: none;
+    margin: 0 auto;
+    padding: 150px 0;
+    text-align: center;
+    width: 64px;
 }
 
 .loading:after {

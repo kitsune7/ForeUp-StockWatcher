@@ -23,13 +23,14 @@
 
     <main>
         <h1>Stock Watcher</h1>
-        <form>
+        <form name="stockAdd">
             <input type="text" placeholder="Enter stock symbol..." />
-            <button>Add</button>
+            <input type="submit" value="Add" />
         </form>
 
+        <p class="error"></p>
         <div class="loading"></div>
-        <ul id="stocks"></ul>
+        <ul id="stocks" class="empty"><h2>No stocks yet!</h2></ul>
     </main>
     <footer>
         <!-- Yahoo's Finance API has been shutdown and this alternative API legally requires attribution to use. -->
